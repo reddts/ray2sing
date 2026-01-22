@@ -1,13 +1,24 @@
 package ray2sing_test
 
 import (
+	"fmt"
+	"net/http"
+	"net/http/httptest"
+	"strings"
 	"testing"
 
-	"github.com/hiddify/ray2sing/ray2sing"
+	"github.com/reddts/ray2sing/ray2sing"
 )
 
 func TestBeePass(t *testing.T) {
-	url := "ssconf://s3.amazonaws.com/beedynconprd/ng4lf90ip01zstlyle4r0t56x1qli4cvmt2ws6nh0kdz1jpgzyedogxt3mpxfbxi.json#BeePass"
+
+	ts := httptest.NewServer(http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
+		w.Header().Set("Content-Type", "application/json")
+		fmt.Fprint(w, `{"server":"beacomf.xyz","server_port":"8080","password":"nfzmfcBTcsj287NxNgMZDu","method":"chacha20-ietf-poly1305","name":"BeePass"}`)
+	}))
+	defer ts.Close()
+
+	url := strings.Replace(ts.URL, "http://", "ssconf+http://", 1) + "/config.json#BeePass"
 
 	// Define the expected JSON structure
 	expectedJSON := `{

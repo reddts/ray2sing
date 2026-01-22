@@ -3,7 +3,7 @@ package ray2sing_test
 import (
 	"testing"
 
-	"github.com/hiddify/ray2sing/ray2sing"
+	"github.com/reddts/ray2sing/ray2sing"
 )
 
 func TestHysteria(t *testing.T) {
@@ -18,6 +18,9 @@ func TestHysteria(t *testing.T) {
 				"tag": "remarks § 0",
 				"server": "host",
 				"server_port": 443,
+				"up_mbps": 100,
+				"down_mbps": 100,
+				"auth_str": "123456",
 				"tls": {
 				"enabled": true,
 				"server_name": "sni.domain",

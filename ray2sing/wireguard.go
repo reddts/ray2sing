@@ -14,19 +14,9 @@ func WiregaurdSingbox(url string) (*T.Outbound, error) {
 	if err != nil {
 		return nil, err
 	}
-	fake_packet_count, err := getOneOf(u.Params, "ifp", "wnoisecount")
-	if err != nil {
-		return nil, err
-	}
-	fake_packet_delay, err := getOneOf(u.Params, "ifpd", "wnoisedelay")
-	if err != nil {
-		return nil, err
-	}
-
-	fake_packet_size, err := getOneOf(u.Params, "ifps", "wpayloadsize")
-	if err != nil {
-		return nil, err
-	}
+	fake_packet_count, _ := getOneOf(u.Params, "ifp", "wnoisecount")
+	fake_packet_delay, _ := getOneOf(u.Params, "ifpd", "wnoisedelay")
+	fake_packet_size, _ := getOneOf(u.Params, "ifps", "wpayloadsize")
 	fake_packet_mode := u.Params["ifpm"]
 	if wnoise, ok := u.Params["wnoise"]; ok {
 		switch wnoise {

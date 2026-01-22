@@ -3,7 +3,7 @@ package ray2sing_test
 import (
 	"testing"
 
-	"github.com/hiddify/ray2sing/ray2sing"
+	"github.com/reddts/ray2sing/ray2sing"
 )
 
 func TestVless(t *testing.T) {
@@ -37,7 +37,7 @@ func TestVless(t *testing.T) {
 			  "max_early_data": 2048,
 			  "early_data_header_name": "Sec-WebSocket-Protocol"
 			},
-			"packet_encoding": ""
+			"packet_encoding": "xudp"
 		  }
 		]
 	  }

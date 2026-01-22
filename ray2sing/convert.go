@@ -15,32 +15,33 @@ import (
 )
 
 var configTypes = map[string]ParserFunc{
-	"vmess://":     VmessSingbox,
-	"vless://":     VlessSingbox,
-	"trojan://":    TrojanSingbox,
-	"svmess://":    VmessSingbox,
-	"svless://":    VlessSingbox,
-	"strojan://":   TrojanSingbox,
-	"ss://":        ShadowsocksSingbox,
-	"tuic://":      TuicSingbox,
-	"hysteria://":  HysteriaSingbox,
-	"hysteria2://": Hysteria2Singbox,
-	"hy2://":       Hysteria2Singbox,
-	"ssh://":       SSHSingbox,
-	"wg://":        WiregaurdSingbox,
-	"wireguard://": WiregaurdSingbox,
-	"ssconf://":    BeepassSingbox,
-	"warp://":      WarpSingbox,
-	"direct://":    DirectSingbox,
-	"socks://":     SocksSingbox,
-	"phttp://":     HttpSingbox,
-	"phttps://":    HttpsSingbox,
-	"http://":      HttpSingbox,
-	"https://":     HttpsSingbox,
-	"xvmess://":    VmessXray,
-	"xvless://":    VlessXray,
-	"xtrojan://":   TrojanXray,
-	"xdirect://":   DirectXray,
+	"vmess://":       VmessSingbox,
+	"vless://":       VlessSingbox,
+	"trojan://":      TrojanSingbox,
+	"svmess://":      VmessSingbox,
+	"svless://":      VlessSingbox,
+	"strojan://":     TrojanSingbox,
+	"ss://":          ShadowsocksSingbox,
+	"tuic://":        TuicSingbox,
+	"hysteria://":    HysteriaSingbox,
+	"hysteria2://":   Hysteria2Singbox,
+	"hy2://":         Hysteria2Singbox,
+	"ssh://":         SSHSingbox,
+	"wg://":          WiregaurdSingbox,
+	"wireguard://":   WiregaurdSingbox,
+	"ssconf://":      BeepassSingbox,
+	"ssconf+http://": BeepassSingbox,
+	"warp://":        WarpSingbox,
+	"direct://":      DirectSingbox,
+	"socks://":       SocksSingbox,
+	"phttp://":       HttpSingbox,
+	"phttps://":      HttpsSingbox,
+	"http://":        HttpSingbox,
+	"https://":       HttpsSingbox,
+	"xvmess://":      VmessXray,
+	"xvless://":      VlessXray,
+	"xtrojan://":     TrojanXray,
+	"xdirect://":     DirectXray,
 }
 var xrayConfigTypes = map[string]ParserFunc{
 	"vmess://":  VmessXray,
@@ -51,8 +52,8 @@ var xrayConfigTypes = map[string]ParserFunc{
 
 func decodeUrlBase64IfNeeded(config string) string {
 	splt := strings.SplitN(config, "://", 2)
-    if len(splt)<2{
-		//return config   
+	if len(splt) < 2 {
+		//return config
 	}
 	rest, _ := decodeBase64IfNeeded(splt[1])
 	// fmt.Println(rest, err)
@@ -64,8 +65,8 @@ func processSingleConfig(config string, useXrayWhenPossible bool) (outbound *T.O
 		if r := recover(); r != nil {
 			outbound = nil
 			stackTrace := make([]byte, 1024)
-			s:=runtime.Stack(stackTrace, false)
-			stackStr:=fmt.Sprint(string(stackTrace[:s]))
+			s := runtime.Stack(stackTrace, false)
+			stackStr := fmt.Sprint(string(stackTrace[:s]))
 			err = E.New("Error in Parsing:", r, "Stack trace:", stackStr)
 		}
 	}()
@@ -186,11 +187,10 @@ func Ray2Singbox(configs string, useXrayWhenPossible bool) (out string, err erro
 		if r := recover(); r != nil {
 			out = ""
 			stackTrace := make([]byte, 1024)
-			s:=runtime.Stack(stackTrace, false)
-			stackStr:=fmt.Sprint(string(stackTrace[:s]))
+			s := runtime.Stack(stackTrace, false)
+			stackStr := fmt.Sprint(string(stackTrace[:s]))
 			err = E.New("Error in Parsing", configs, r, "Stack trace:", stackStr)
-			
-			
+
 		}
 	}()
 

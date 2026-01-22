@@ -2,6 +2,7 @@ package ray2sing
 
 import (
 	"encoding/json"
+	"fmt"
 	"io"
 	"net/http"
 	"net/url"
@@ -21,8 +22,17 @@ type beepassData struct {
 
 func fetchSSConf(parsedURL *url.URL) ([]byte, error) {
 
+	scheme := "https"
+	if parsedURL.Scheme == "ssconf+http" {
+		scheme = "http"
+	}
+
+	if override := parsedURL.Query().Get("scheme"); override != "" {
+		scheme = override
+	}
+
 	// Construct the HTTP URL
-	httpURL := "https://" + parsedURL.Host + parsedURL.Path
+	httpURL := fmt.Sprintf("%s://%s%s", scheme, parsedURL.Host, parsedURL.Path)
 
 	// Make the HTTP request
 	resp, err := http.Get(httpURL)

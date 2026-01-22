@@ -3,7 +3,7 @@ package ray2sing_test
 import (
 	"testing"
 
-	"github.com/hiddify/ray2sing/ray2sing"
+	"github.com/reddts/ray2sing/ray2sing"
 )
 
 func TestVmess(t *testing.T) {
@@ -21,7 +21,8 @@ func TestVmess(t *testing.T) {
 			"server_port": 8080,
 			"uuid": "d43ee5e3-1b07-56d7-b2ea-8d22c44fdc66",
 			"security": "chacha20-poly1305",
-			"authenticated_length": true			
+			"authenticated_length": true,
+			"packet_encoding": "xudp"			
 		  }
 		]
 	  }

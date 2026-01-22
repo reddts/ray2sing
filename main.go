@@ -9,7 +9,7 @@ import (
 	"os"
 	"strings"
 
-	"github.com/hiddify/ray2sing/ray2sing"
+	"github.com/reddts/ray2sing/ray2sing"
 )
 
 var examples = map[string][]string{

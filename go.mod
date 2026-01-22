@@ -8,7 +8,7 @@ require (
 	github.com/sagernet/sing v0.5.1
 	github.com/sagernet/sing-box v1.8.9
 	github.com/spf13/cobra v1.8.1
-	github.com/xtls/xray-core v0.0.0-00010101000000-000000000000
+	github.com/xtls/xray-core v0.0.0-20260122035639-4d34a9263df3
 )
 
 require (
@@ -57,4 +57,4 @@ require (
 
 replace github.com/sagernet/sing-box => github.com/hiddify/hiddify-sing-box v1.8.9-0.20250310060624-ba3a2276386a
 
-replace github.com/xtls/xray-core => github.com/hiddify/xray-core v0.0.0-20250309103214-9c37715a67c2
+replace github.com/xtls/xray-core => github.com/reddts/xray-core v0.0.0-20260122035639-4d34a9263df3
